@@ -275,13 +275,23 @@ function makeGuess(guess) {
                 cell.innerText += (guess.year < targetChampion.year) ? " ⬆️" : " ⬇️";
             }
         }
+
         //partial
-        else if (guess[attr] === targetChampion[attr]) {
+        //convert se listes "Mid, Jungle" -> ["Mid", "Jungle"])
+        const targetValues = targetChampion[attr].toString().split(', ').sort();
+        const guessValues = guess[attr].toString().split(', ').sort();
+
+        const targetStr = targetValues.join(', ');
+        const guessStr = guessValues.join(', ');
+
+        if (targetStr === guessStr) {
+            // 1. ΑΠΟΛΥΤΑ ΙΔΙΑ (π.χ. Mid, Jungle == Jungle, Mid)
             cell.classList.add('correct');
-        } else if (targetChampion[attr].toString().includes(guess[attr].toString())) {
+        } else if (guessValues.some(val => targetValues.includes(val))) {
+            // 2. ΜΕΡΙΚΩΣ ΙΔΙΑ (π.χ. αν το ένα έχει Mid και το άλλο Mid, Top)
             cell.classList.add('partial');
-            //console.log(guess[attr] + " is partial of " + targetChampion[attr]);
         } else {
+            // 3. ΕΝΤΕΛΩΣ ΛΑΘΟΣ
             cell.classList.add('wrong');
         }
 
