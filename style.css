@@ -1,0 +1,145 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+}
+
+/* style.css */
+
+.cell {
+    background: #333;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    text-align: center;
+    border: 2px solid #444;
+    padding: 5px;
+    
+    /* Αρχική κατάσταση: αόρατο */
+    opacity: 0;
+    transform: translateY(10px);
+    
+    /* Εφαρμογή του animation */
+    animation: revealCell 1s ease forwards;
+    /* Η καθυστέρηση ορίζεται από τη μεταβλητή --i που θα δώσουμε στη JS */
+    animation-delay: calc(var(--i) * 0.5s); 
+    flex-direction: column;
+    font-size: 11px; /* Λίγο μικρότερο font για να χωράνε όλα */
+}
+
+.champ-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: 1px solid; /* Προαιρετικά ένα χρυσό περίγραμμα */
+}
+
+
+
+@keyframes revealCell {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #444;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background: #333;
+}
+
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+
+.autocomplete-item:hover {
+    background-color: #444;
+}
+
+.results-header {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.guess-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    margin-bottom: 5px;
+    animation: flipIn 0.5s ease-forward;
+}
+
+.cell {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid #444;
+    padding: 5px;
+}
+
+.correct { background-color: #1d804e !important; }
+.partial { background-color: #c27e10 !important; }
+.wrong { background-color: #a83232 !important; }
+
+.action-btn {
+    background-color: #c27e10;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #e69516;
+}
+@keyframes flipIn {
+    from { transform: rotateX(90deg); opacity: 0; }
+    to { transform: rotateX(0deg); opacity: 1; }
+}

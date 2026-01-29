@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markatolodle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Markatolodle</h1>
+        <button id="new-game-btn" class="action-btn">New Game</button>
+
+        <div class="search-container">
+            <input type="text" id="champion-input" placeholder="Guess the Champion" autocomplete="off">
+            <div id="autocomplete-list" class="autocomplete-items"></div>
+        </div>
+
+        <div class="results-container">
+            <div class="results-header">
+                <div class="cell-head">Champion</div>
+                <div class="cell-head">Gender</div>
+                <div class="cell-head">Potision(s)</div>
+                <div class="cell-head">Species</div>
+                <div class="cell-head">Resource</div>
+                <div class="cell-head">Range type</div>
+                <div class="cell-head">Region(s)</div>
+                <div class="cell-head">Release Year</div>
+            </div>
+            <div id="guesses-box">
+                </div>
+        </div>
+    </div>
+
+    <script src="champion.js"></script>
+</body>
+</html>
