@@ -208,7 +208,7 @@ function startNewGame() {
     input.value = '';
     list.innerHTML = '';
     guessedChampions = []; //reset guessed
-    //console.log("Cheat code: "+targetChampion.name);
+    console.log("Cheat code: "+targetChampion.name);
 }
 
 newGameBtn.addEventListener('click', () => {
